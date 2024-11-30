@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Add Entry</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Entry</h2>
+        <form method="POST">
+            <input type="date" name="date" placeholder="Date">
+            <input type="text" name="class_name" placeholder="Class" required>
+            <input type="text" name="lesson_title" placeholder="Lesson Title" required>
+            <button type="submit">Add Entry</button>
+        </form>
+        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>
