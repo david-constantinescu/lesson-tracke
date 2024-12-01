@@ -56,7 +56,7 @@ def signup():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         if password == confirm_password:
-            hashed_password = generate_password_hash(password, method='sha256')
+            hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
             new_user = User(name=name, surname=surname, email=email, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
