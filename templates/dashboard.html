@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to your Dashboard</h1>
+        <div class="buttons">
+            <a href="{{ url_for('add_entry') }}" class="btn">Add Entry</a>
+            <a href="{{ url_for('schedule') }}" class="btn">Schedule Lesson</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        </div>
+
+        <h2>Your Entries</h2>
+        <ul>
+            {% for entry in entries %}
+                <li>{{ entry.date }} - {{ entry.class_name }}: {{ entry.lesson_title }}</li>
+            {% else %}
+                <li>No entries found.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Upcoming Lessons</h2>
+        <ul>
+            {% for lesson in upcoming_lessons %}
+                <li>{{ lesson.date }} - {{ lesson.class_name }}: {{ lesson.name }}</li>
+            {% else %}
+                <li>No upcoming lessons scheduled.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Status by Class</h2>
+        <ul>
+            {% for class_name, status in class_status.items() %}
+                <li>{{ class_name }}: {{ status }}</li>
+            {% else %}
+                <li>No class data found.</li>
+            {% endfor %}
+        </ul>
+        <h2>Your Entries</h2>
+        <ul>
+            {% for entry in entries %}
+                <li>{{ entry.date }} - {{ entry.class_name }}: {{ entry.lesson_title }}</li>
+            {% else %}
+                <li>No entries found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
